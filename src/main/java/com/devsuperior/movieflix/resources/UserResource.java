@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.devsuperior.movieflix.dto.UserDTO;
+import com.devsuperior.movieflix.entities.User;
 import com.devsuperior.movieflix.services.UserService;
 
 @RestController
@@ -20,6 +21,12 @@ public class UserResource {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<UserDTO> findById(@PathVariable Long id){
 		UserDTO dto = service.finbyId(id);
+		return ResponseEntity.ok().body(dto);
+	}
+	
+	@GetMapping(value = "/profile")
+	public ResponseEntity<User> findUserProfile(){
+		User dto = service.findUserProfile();
 		return ResponseEntity.ok().body(dto);
 	}
 }

@@ -39,8 +39,4 @@ public class RoleDTO  implements Serializable {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 }

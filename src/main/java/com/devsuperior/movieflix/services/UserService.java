@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.devsuperior.movieflix.dto.UserDTO;
 import com.devsuperior.movieflix.entities.User;
+import com.devsuperior.movieflix.repositories.RoleRepository;
 import com.devsuperior.movieflix.repositories.UserRepository;
 import com.devsuperior.movieflix.services.exceptions.ResourceNotFoundException;
 
@@ -43,6 +44,12 @@ public class UserService implements UserDetailsService{
 			throw new UsernameNotFoundException("Email not found");
 		}
 		logger.info("User found " + username);
+		return user;
+	}
+	
+	@Transactional(readOnly = true)
+	public User findUserProfile() {
+		User user = authService.authenticated();		
 		return user;
 	}
 }
